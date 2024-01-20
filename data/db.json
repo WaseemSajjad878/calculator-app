@@ -1,9 +1,20 @@
 {
-  "users" : [
-      {
-        "user_id": "jhdash12212312",
-        "email": "wase804@gmail.com",
-        "password": "wase12345"
-      }
-  ]  
+  "users": [
+    {
+      "id": "ec21",
+      "fullName": "Tasha Newton",
+      "email": "hihiqeje@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "token": "your_static_secret_key.eyJmdWxsTmFtZSI6IlRhc2hhIE5ld3RvbiIsImVtYWlsIjoiaGloaXFlamVAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+    },
+    {
+      "id": "136d",
+      "fullName": "Madison Hendricks",
+      "email": "pepilabit@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "token": "your_static_secret_key.eyJmdWxsTmFtZSI6Ik1hZGlzb24gSGVuZHJpY2tzIiwiZW1haWwiOiJwZXBpbGFiaXRAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+    }
+  ]
 }
