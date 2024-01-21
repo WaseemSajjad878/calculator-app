@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
 import AuthService from '@/services/auth'
 import { errorNotify, successNotify } from '@/composables//useNotification'
-import router from '../router'
+import router from '@/router'
 
 export const useAuthStore = defineStore({
   id: 'auth',
   state:()=> ({
-    token: localStorage.getItem('_token') ?? null,
-    user: JSON.parse(localStorage.getItem('_user')) ?? null,
-    authenticated: localStorage.getItem('_token') ? true : false
+    token: localStorage.getItem('_custom_token') ?? null,
+    user: JSON.parse(localStorage.getItem('_user_data')) ?? null,
+    authenticated: localStorage.getItem('_custom_token') ? true : false
   }),
   getters:{
     getAuthToken: (state) => state.token,
@@ -43,32 +43,32 @@ export const useAuthStore = defineStore({
         console.log('isEmailExist', isEmailExist , isPasswordMatched)
 
         if (!isEmailExist) {
-          errorNotify("Login Failed", "Email does not exist")
-          return;
+          errorNotify('Login Failed', 'Email does not exist')
+          return
         }
 
         else if (!isPasswordMatched) {
-          errorNotify("Login Failed", "Password didn't match")
-          return;
+          errorNotify('Login Failed', 'Password didn"t match')
+          return
         }
-        localStorage.setItem('_token', currentUser?.token)
+        localStorage.setItem('_custom_token', currentUser?.token)
         this.token = currentUser?.token
         this.authenticated = true
         this.updateUser(currentUser)
-        router.push('/dashboard')
+        router.push({ name: 'dashboard' })
         successNotify('Success!', 'Logged in successfully')
       } catch (err) {
         errorNotify('error', err.data?.message)
       }
     },
     updateUser(updatedUserData) {
-      this.user = updatedUserData;
-      localStorage.setItem('_user', JSON.stringify(updatedUserData));
+      this.user = updatedUserData
+      localStorage.setItem('_user_data', JSON.stringify(updatedUserData))
     },
     logout() {
-      localStorage.removeItem('_token')
-      localStorage.removeItem('_user')
-      router.push('/login')
+      localStorage.removeItem('_custom_token')
+      localStorage.removeItem('_user_data')
+      router.push({ name: 'login' })
       this.token = null
       this.user = null
       this.authenticated = false

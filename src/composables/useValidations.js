@@ -3,18 +3,18 @@ export const required = (val) => {
 }
 
 export const email = (value) => {
-  const regx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const regx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return regx.test(value) || 'Invalid Email'
 }
 export const password = (val) => {
-  const hasUpperCase = /[A-Z]/.test(val);
-  const hasNumber = /\d/.test(val);
-  const hasSpecialChar = /[^a-zA-Z0-9]/.test(val);
+  const hasUpperCase = /[A-Z]/.test(val)
+  const hasNumber = /\d/.test(val)
+  const hasSpecialChar = /[^a-zA-Z0-9]/.test(val)
 
   if (hasUpperCase && hasNumber && hasSpecialChar && val.length >= 8 && val.length <= 32) {
-    return true;
+    return true
   } else {
-    return 'Must contain at least one uppercase letter, one number, one special character, and be 8 to 32 characters long';
+    return 'Must contain at least one uppercase letter, one number, one special character, and be 8 to 32 characters long'
   }
 }
 

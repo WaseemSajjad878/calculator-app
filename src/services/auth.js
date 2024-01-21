@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:7000'
 
 const apiClient = axios.create({
     baseURL: baseUrl,
@@ -16,20 +16,20 @@ const createCustomToken = (user)=> {
         sub: user.id,
         fullName: user.fullName,
         email: user.email,
-    };
+    }
 
-    const encodedPayload = btoa(JSON.stringify(payload));
+    const encodedPayload = btoa(JSON.stringify(payload))
 
-    return `your_static_secret_key.${encodedPayload}.your_static_secret_key`;
-};
+    return `your_static_secret_key.${encodedPayload}.your_static_secret_key`
+}
 
 export default {
-    getUsers(){
-        return apiClient.get('/users')
+    async getUsers(){
+        return await apiClient.get('/users')
   },
  async addUsers(payload){
-     const token = createCustomToken(payload); 
-     const res = await apiClient.post('/users', {...payload, token});
-     return res;
+     const token = createCustomToken(payload) 
+     const res = await apiClient.post('/users', {...payload, token})
+     return res
     }
 }

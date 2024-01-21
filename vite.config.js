@@ -5,6 +5,9 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 6900,
+  },
   plugins: [
     vue({
       template: { transformAssetUrls },

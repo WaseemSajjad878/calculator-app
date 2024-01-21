@@ -43,14 +43,14 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('_token')
+  const token = localStorage.getItem('_custom_token')
 
   if (to.meta.requiresAuth && !token) {
-    next({ name: 'login' });
+    next({ name: 'login' })
   } else if (!to.meta.requiresAuth && token) {
-    next({ name: 'dashboard' });
+    next({ name: 'dashboard' })
   } else {
-    next();
+    next()
   }
 })
 

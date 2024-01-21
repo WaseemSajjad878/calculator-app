@@ -6,7 +6,7 @@
   "scripts": {
     "dev_old": "vite",
     "dev:frontend": "vite",
-    "dev:backend": "json-server -w ./data/db.json",
+    "dev:backend": "json-server -w ./data/db.json --port 7000",
     "dev": "concurrently 'npm:dev:frontend' 'npm:dev:backend'",
     "build": "vite build",
     "preview": "vite preview",

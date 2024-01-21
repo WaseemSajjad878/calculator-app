@@ -5,8 +5,32 @@
       "firstName": "Lester",
       "lastName": "Vincent",
       "email": "rajymaxod@mailinator.com",
-      "password": "Pa$$w0rd!",
+      "password": "Pa$$w0rd!ss",
       "token": "your_static_secret_key.eyJlbWFpbCI6InJhanltYXhvZEBtYWlsaW5hdG9yLmNvbSJ9.your_static_secret_key"
+    },
+    {
+      "id": "d70d",
+      "firstName": "Tarik",
+      "lastName": "Wade",
+      "email": "xoqulepixy@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "token": "your_static_secret_key.eyJlbWFpbCI6InhvcXVsZXBpeHlAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+    },
+    {
+      "id": "a431",
+      "firstName": "Tanisha",
+      "lastName": "Cherry",
+      "email": "qanyqisini@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "token": "your_static_secret_key.eyJlbWFpbCI6InFhbnlxaXNpbmlAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+    },
+    {
+      "id": "bc83",
+      "firstName": "Donna",
+      "lastName": "Barrett",
+      "email": "cyqawefus@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "token": "your_static_secret_key.eyJlbWFpbCI6ImN5cWF3ZWZ1c0BtYWlsaW5hdG9yLmNvbSJ9.your_static_secret_key"
     }
   ]
 }

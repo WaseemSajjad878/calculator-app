@@ -5,10 +5,11 @@ import AuthWrapper from '@/components/AuthWrapper.vue'
 import { required , email , password , confirmPassword } from '@/composables/useValidations'
 import { usePasswordVisibility } from '@/composables/usePasswordVisibility'
 import { successNotify } from '@/composables//useNotification'
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 const { passwordVisible, togglePasswordVisibility } = usePasswordVisibility([false, false])
-
+const router = useRouter()
 
 const formData = ref({
   firstName: '',
@@ -23,10 +24,11 @@ const submit = async () => {
   const users = await authStore.getUsersList()
   const isUserExist = users?.data.some(user => user.email === formData.value.email)
   console.log('isUserExist' , isUserExist)
-  if (isUserExist) return;
+  if (isUserExist) return
   else if(!isUserExist) {
     authStore.signUp(formData.value)
      successNotify('Success!', 'Signed up successfully')
+      router.push({ name: 'login' })
     console.log('values', formData.value)
   }
 }
