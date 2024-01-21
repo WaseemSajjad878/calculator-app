@@ -6,15 +6,14 @@ import router from '../router'
 export const useAuthStore = defineStore({
   id: 'auth',
   state:()=> ({
-    authenticated: false,
-    user: null,
     token: localStorage.getItem('_token') ?? null,
+    user: JSON.parse(localStorage.getItem('_user')) ?? null,
+    authenticated: localStorage.getItem('_token') ? true : false
   }),
-  getters: {
-    isAuthenticated: (state) => state.authenticated,
-    getAuthStatus: (state) => !!state.user.id || state.token,
+  getters:{
     getAuthToken: (state) => state.token,
-    getAuthUser: (state) => state.user,
+    isAuthenticated: (state) => state.authenticated,
+    getCurrentUser: (state) => state.user
   },
   actions: {
     async signUp(payload) {
@@ -52,22 +51,27 @@ export const useAuthStore = defineStore({
           errorNotify("Login Failed", "Password didn't match")
           return;
         }
-        // this.user = currentUser
-        console.log(this.user)
         localStorage.setItem('_token', currentUser?.token)
-        // this.authenticated = true
+        this.token = currentUser?.token
+        this.authenticated = true
+        this.updateUser(currentUser)
         router.push('/dashboard')
         successNotify('Success!', 'Logged in successfully')
       } catch (err) {
         errorNotify('error', err.data?.message)
       }
     },
+    updateUser(updatedUserData) {
+      this.user = updatedUserData;
+      localStorage.setItem('_user', JSON.stringify(updatedUserData));
+    },
     logout() {
       localStorage.removeItem('_token')
+      localStorage.removeItem('_user')
       router.push('/login')
+      this.token = null
+      this.user = null
       this.authenticated = false
-      // this.token = null
-      // this.user = null
     },
   },
 })

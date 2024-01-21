@@ -9,12 +9,15 @@ import { successNotify } from '@/composables//useNotification'
 const authStore = useAuthStore()
 const { passwordVisible, togglePasswordVisibility } = usePasswordVisibility([false, false])
 
+
 const formData = ref({
-   fullName: '',
-   email: '',
-   password: '',
-   confirmPassword: '' 
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
 })
+
+const confirmPass = ref(null)
 
 const submit = async () => {
   const users = await authStore.getUsersList()
@@ -34,12 +37,24 @@ const submit = async () => {
   <AuthWrapper>
     <q-form @submit="submit" :greedy="true">
       <h4 class="text-h4 text-center text-weight-bold q-my-none">Sign Up</h4>
-      <div class="row q-col-gutter-md">
+      <div class="row q-col-gutter-xs">
         <div class="col-12">
           <q-input
             outlined
-            v-model="formData.fullName"
-            label="Full Name"
+            v-model="formData.firstName"
+            label="First Name"
+            class="q-mt-md custom-q-input"
+            lazy-rules
+            no-error-icon
+            autocomplete
+            :rules="[required]"
+          />
+        </div>
+        <div class="col-12">
+          <q-input
+            outlined
+            v-model="formData.lastName"
+            label="Last Name"
             class="q-mt-md custom-q-input"
             lazy-rules
             no-error-icon
@@ -85,7 +100,7 @@ const submit = async () => {
           <q-input
             class="q-mt-md custom-q-input"
             outlined
-            v-model="formData.confirmPassword"
+            v-model="confirmPass"
             :type="passwordVisible[1] ? 'text' : 'password'"
             label="Confirm Password"
             lazy-rules

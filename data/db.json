@@ -1,20 +1,12 @@
 {
   "users": [
     {
-      "id": "ec21",
-      "fullName": "Tasha Newton",
-      "email": "hihiqeje@mailinator.com",
+      "id": "0d2e",
+      "firstName": "Lester",
+      "lastName": "Vincent",
+      "email": "rajymaxod@mailinator.com",
       "password": "Pa$$w0rd!",
-      "confirmPassword": "Pa$$w0rd!",
-      "token": "your_static_secret_key.eyJmdWxsTmFtZSI6IlRhc2hhIE5ld3RvbiIsImVtYWlsIjoiaGloaXFlamVAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
-    },
-    {
-      "id": "136d",
-      "fullName": "Madison Hendricks",
-      "email": "pepilabit@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmPassword": "Pa$$w0rd!",
-      "token": "your_static_secret_key.eyJmdWxsTmFtZSI6Ik1hZGlzb24gSGVuZHJpY2tzIiwiZW1haWwiOiJwZXBpbGFiaXRAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+      "token": "your_static_secret_key.eyJlbWFpbCI6InJhanltYXhvZEBtYWlsaW5hdG9yLmNvbSJ9.your_static_secret_key"
     }
   ]
 }
