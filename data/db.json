@@ -17,20 +17,58 @@
       "token": "your_static_secret_key.eyJlbWFpbCI6InhvcXVsZXBpeHlAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
     },
     {
-      "id": "a431",
-      "firstName": "Tanisha",
-      "lastName": "Cherry",
-      "email": "qanyqisini@mailinator.com",
+      "id": "795b",
+      "firstName": "Quincy",
+      "lastName": "Dejesus",
+      "email": "hirymuwof@mailinator.com",
       "password": "Pa$$w0rd!",
-      "token": "your_static_secret_key.eyJlbWFpbCI6InFhbnlxaXNpbmlAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+      "token": "your_static_secret_key.eyJlbWFpbCI6ImhpcnltdXdvZkBtYWlsaW5hdG9yLmNvbSJ9.your_static_secret_key"
     },
     {
-      "id": "bc83",
-      "firstName": "Donna",
-      "lastName": "Barrett",
-      "email": "cyqawefus@mailinator.com",
+      "id": "06e5",
+      "firstName": "Erin",
+      "lastName": "Vang",
+      "email": "xehucexiqu@mailinator.com",
       "password": "Pa$$w0rd!",
-      "token": "your_static_secret_key.eyJlbWFpbCI6ImN5cWF3ZWZ1c0BtYWlsaW5hdG9yLmNvbSJ9.your_static_secret_key"
+      "token": "your_static_secret_key.eyJlbWFpbCI6InhlaHVjZXhpcXVAbWFpbGluYXRvci5jb20ifQ==.your_static_secret_key"
+    }
+  ],
+  "history": [
+    {
+      "id": "9267",
+      "operation": "add",
+      "num1": 12,
+      "num2": 33,
+      "result": "$45.00",
+      "timestamp": "23/01/2024, 06:25:11",
+      "userID": "0d2e"
+    },
+    {
+      "id": "a16c",
+      "operation": "subtract",
+      "num1": 12,
+      "num2": 33,
+      "result": "-$21",
+      "timestamp": "23/01/2024, 06:25:12",
+      "userID": "0d2e"
+    },
+    {
+      "id": "f4ad",
+      "operation": "multiply",
+      "num1": 12,
+      "num2": 33,
+      "result": "$396.00",
+      "timestamp": "23/01/2024, 06:25:13",
+      "userID": "0d2e"
+    },
+    {
+      "id": "0103",
+      "operation": "divide",
+      "num1": 12,
+      "num2": 33,
+      "result": "$0.36",
+      "timestamp": "23/01/2024, 06:25:14",
+      "userID": "0d2e"
     }
   ]
 }

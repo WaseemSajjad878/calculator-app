@@ -1,4 +1,7 @@
 @import './variables/colors';
+body{
+  overflow: hidden;
+}
 
 // custom classes
 .cover{
@@ -10,4 +13,3 @@
 .border-l-8-negative {
   border-left: 8px solid $negative;
 }
-

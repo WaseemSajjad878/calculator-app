@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed , onMounted } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 import BasicCalculator from '@/components/BasicCalculator.vue'
 
@@ -14,9 +14,9 @@ const userFullName = computed(() => {
   return authStore?.getCurrentUser?.firstName + ' ' + authStore?.getCurrentUser?.lastName
 })
 
-// onMounted(async ()=> {
-//   await console.log('authStore?.getCurrentUser' , authStore?.getCurrentUser)
-// })
+onMounted(async ()=> {
+ await authStore?.loadUserData()
+})
 
 
 </script>
@@ -41,7 +41,7 @@ const userFullName = computed(() => {
           </div>
         </q-img>
 
-        <q-list class="q-mt-auto">
+        <q-list>
           <q-item @click="logout" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="logout" />

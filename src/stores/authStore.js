@@ -6,20 +6,20 @@ import router from '@/router'
 export const useAuthStore = defineStore({
   id: 'auth',
   state:()=> ({
-    token: localStorage.getItem('_custom_token') ?? null,
-    user: JSON.parse(localStorage.getItem('_user_data')) ?? null,
-    authenticated: localStorage.getItem('_custom_token') ? true : false
+    token: localStorage.getItem('_custom_token') || null,
+    user: null,
+    authenticated: !!localStorage.getItem('_custom_token'),
   }),
   getters:{
     getAuthToken: (state) => state.token,
     isAuthenticated: (state) => state.authenticated,
-    getCurrentUser: (state) => state.user
+    getCurrentUser: (state) => state.user,
+    getUserId: (state) => state.user?.id,
   },
   actions: {
     async signUp(payload) {
       try {
         const res = await AuthService.addUsers(payload)
-        console.log('response', res)
       } catch (err) {
         errorNotify('error', err.data.message)
       } 
@@ -37,19 +37,14 @@ export const useAuthStore = defineStore({
     async login(formData) {
       try {
         const res = await this.getUsersList()
-        const currentUser = res.data?.find(user => user.email === formData.email)
-        const isEmailExist = currentUser?.email === formData.email ? true : false
-        const isPasswordMatched = currentUser?.password === formData.password ? true : false
-        console.log('isEmailExist', isEmailExist , isPasswordMatched)
+        const currentUser = res.data?.find(user => user.email === formData?.email)
 
-        if (!isEmailExist) {
-          errorNotify('Login Failed', 'Email does not exist')
-          return
+        if (!currentUser) {
+          return errorNotify('Login Failed', 'Email does not exist')
         }
 
-        else if (!isPasswordMatched) {
-          errorNotify('Login Failed', 'Password didn"t match')
-          return
+        if (currentUser.password !== formData?.password) {
+          return errorNotify('Login Failed', 'Password didn"t match')
         }
         localStorage.setItem('_custom_token', currentUser?.token)
         this.token = currentUser?.token
@@ -61,13 +56,23 @@ export const useAuthStore = defineStore({
         errorNotify('error', err.data?.message)
       }
     },
+    async loadUserData() {
+      try {
+        const res = await this.getUsersList()
+        const currentUser = res.data?.find(user => user.token === this.token)
+
+        if (currentUser) {
+          this.updateUser(currentUser)
+        }
+      } catch (err) {
+        errorNotify('error', 'Failed to load user data')
+      }
+    },
     updateUser(updatedUserData) {
       this.user = updatedUserData
-      localStorage.setItem('_user_data', JSON.stringify(updatedUserData))
     },
     logout() {
       localStorage.removeItem('_custom_token')
-      localStorage.removeItem('_user_data')
       router.push({ name: 'login' })
       this.token = null
       this.user = null
